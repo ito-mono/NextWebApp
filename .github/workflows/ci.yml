@@ -1,0 +1,22 @@
+name: CI-Test-Frontend
+
+on: [push]
+
+jobs:
+  CI-Jest:
+    name: CI-Jest
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./
+    steps:
+      - name: ソースをチェックアウト
+        uses: actions/checkout@v4
+      - name: Nodeのセットアップ
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: パッケージのインストール
+        run: npm install
+      - name: テスト実行
+        run: npm run test
