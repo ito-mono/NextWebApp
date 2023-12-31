@@ -12,6 +12,7 @@
     "build-sb": "storybook build"
   },
   "dependencies": {
+    "clsx": "^2.1.0",
     "next": "14.0.4",
     "react": "^18",
     "react-dom": "^18"
@@ -34,10 +35,12 @@
     "autoprefixer": "^10.0.1",
     "eslint": "^8",
     "eslint-config-next": "14.0.4",
+    "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-storybook": "^0.6.15",
     "jest": "^29.7.0",
     "jest-environment-jsdom": "^29.7.0",
     "postcss": "^8",
+    "prettier": "^3.1.1",
     "storybook": "^7.6.6",
     "tailwindcss": "^3.3.0",
     "typescript": "^5"
