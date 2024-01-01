@@ -25,13 +25,13 @@ const rounds = {
   lg: 'rounded-lg',
 };
 
-const Button = ({
+export default function Button({
   children,
   variant = 'primary',
   size = 'md',
   isRounded = true,
   ...props
-}: ButtonProps) => {
+}: ButtonProps) {
   const classNames = clsx(variants[variant], sizes[size], isRounded ? rounds[size] : null);
 
   return (
@@ -39,6 +39,4 @@ const Button = ({
       <button className={classNames}>{children}</button>
     </div>
   );
-};
-
-export default Button;
+}

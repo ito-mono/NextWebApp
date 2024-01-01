@@ -14,6 +14,6 @@ type Story = StoryObj<LandoltRingImageProps>;
 export const Primary: Story = {
   args: {
     direction: 'up',
-    size: 'md',
+    distance: 1,
   },
 };
