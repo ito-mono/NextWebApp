@@ -1,3 +1,5 @@
+'use client';
+
 import clsx from 'clsx';
 
 export type ButtonProps = {
@@ -5,6 +7,7 @@ export type ButtonProps = {
   size?: keyof typeof sizes;
   isRounded?: boolean;
   children?: React.ReactNode;
+  onClick?: () => void;
 };
 
 const variants = {
@@ -36,7 +39,9 @@ export default function Button({
 
   return (
     <div>
-      <button className={classNames}>{children}</button>
+      <button className={classNames} {...props}>
+        {children}
+      </button>
     </div>
   );
 }

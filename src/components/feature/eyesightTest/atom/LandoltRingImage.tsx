@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import clsx from 'clsx';
 
-const rotations = {
+export const directions = {
   up: 'rotate-0',
   upRight: 'rotate-45',
   right: 'rotate-90',
@@ -27,7 +27,7 @@ export type LandoltRingImageProps = {
   windowWidth: number;
   windowHeight: number;
   inch: number;
-  direction: keyof typeof rotations;
+  direction: keyof typeof directions;
   distance: (typeof distances)[number];
   eyesight: (typeof eyesights)[number];
 };
@@ -50,7 +50,7 @@ export default function LandoltRingImage({
   let size = (7.5 / eyesight) * (distance / 5);
   size = mmToPx(size, dpi);
 
-  const classNames = clsx(rotations[direction]);
+  const classNames = clsx(directions[direction]);
 
   return (
     <Image alt={alt} src={src} width={size} height={size} className={classNames} {...props}></Image>
