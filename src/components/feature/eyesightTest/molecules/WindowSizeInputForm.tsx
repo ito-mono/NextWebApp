@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Input } from '@/components/base';
+import { NumberInput } from '@/components/base';
 
 export type WindowSizeInputFormProps = {};
 
@@ -12,7 +12,7 @@ export function WindowSizeInputForm() {
   const [isError, setIsError] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     if (width <= 0 || height <= 0) {
       setIsError(true);
@@ -20,13 +20,13 @@ export function WindowSizeInputForm() {
       return;
     }
     setIsSubmit(true);
-  };
+  }
 
   return (
     <div>
       <form onSubmit={handleSubmit}>
         <div>
-          <Input label='Width' value='a'></Input>
+          <NumberInput label='Width' value='0' onChange={setWidth}></NumberInput>
         </div>
         <button type='submit'>設定</button>
       </form>

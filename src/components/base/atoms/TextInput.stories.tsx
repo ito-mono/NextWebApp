@@ -1,20 +1,27 @@
 import { Meta, StoryObj } from '@storybook/react';
-import { Input, InputProps } from './Input';
+import { TextInput, TextInputProps } from './TextInput';
+import { useState } from 'react';
 
 // メタデータの定義とexport default
 const meta: Meta = {
-  title: 'Input',
-  component: Input,
+  title: 'TextInput',
+  component: TextInput,
 };
 export default meta;
 
 // Storyの定義
-type Story = StoryObj<InputProps>;
+type Story = StoryObj<TextInputProps>;
 
 export const Basic: Story = {
   args: {
     value: 'value',
   },
+  decorators: [
+    (Story) => {
+      const [value, setValue] = useState('');
+      return <Story args={{ value, setValue }} />;
+    },
+  ],
 };
 
 export const WithLabel: Story = {
@@ -36,7 +43,7 @@ export const Large: Story = {
   args: {
     label: 'label',
     value: 'value',
-    width: 20,
+    width: '96',
     size: 'lg',
   },
 };

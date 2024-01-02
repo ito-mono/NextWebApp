@@ -1,6 +1,7 @@
 'use client';
 
 import clsx from 'clsx';
+import { Rounds } from '@/components/Utility/TailwindUtility';
 
 const variants = {
   primary: 'bg-blue-600 text-white',
@@ -11,11 +12,6 @@ const sizes = {
   sm: 'py-2 px-4 text-sm',
   md: 'py-2 px-6 text-md',
   lg: 'py-3 px-8 text-lg',
-};
-const rounds = {
-  sm: 'rounded-sm',
-  md: 'rounded-md',
-  lg: 'rounded-lg',
 };
 
 export type ButtonProps = {
@@ -33,7 +29,7 @@ export function Button({
   isRounded = true,
   ...props
 }: ButtonProps) {
-  const classNames = clsx(variants[variant], sizes[size], isRounded ? rounds[size] : null);
+  const classNames = clsx(variants[variant], sizes[size], isRounded ? Rounds[size] : null);
 
   return (
     <div>
