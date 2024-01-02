@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react';
-import EyesightTestController from './EyesightTestController';
+import { EyesightTestController } from '.';
 
 // メタデータの定義とexport default
 const meta: Meta = {

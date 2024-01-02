@@ -1,4 +1,5 @@
-import LandoltRingImage, {
+import {
+  LandoltRingImage,
   LandoltRingImageProps,
 } from '@/components/feature/eyesightTest/atom/LandoltRingImage';
 

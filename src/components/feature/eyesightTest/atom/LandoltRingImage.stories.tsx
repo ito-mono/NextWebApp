@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react';
-import LandoltRingImage, { LandoltRingImageProps } from './LandoltRingImage';
+import { LandoltRingImage, LandoltRingImageProps } from './LandoltRingImage';
 
 // メタデータの定義とexport default
 const meta: Meta = {

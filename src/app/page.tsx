@@ -1,4 +1,4 @@
-import Link from '@/components/base/atoms/Link';
+import { Link } from '@/components/base';
 
 export default function Home() {
   return (

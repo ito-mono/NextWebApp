@@ -33,7 +33,7 @@ export type LandoltRingImageProps = {
 };
 
 // コンポーネントの定義
-export default function LandoltRingImage({
+export function LandoltRingImage({
   windowWidth = 1920,
   windowHeight = 1080,
   inch = 24.5,

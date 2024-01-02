@@ -1,9 +1,11 @@
+'use client';
+
 import { useState } from 'react';
-import Input from '../../../base/atoms/Input';
+import { Input } from '@/components/base';
 
 export type WindowSizeInputFormProps = {};
 
-export default function WindowSizeInputForm() {
+export function WindowSizeInputForm() {
   const [width, setWidth] = useState(0);
   const [height, setHeight] = useState(0);
   const [isSubmit, setIsSubmit] = useState(false);

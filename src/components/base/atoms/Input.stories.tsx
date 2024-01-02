@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react';
-import Input, { InputProps } from './Input';
+import { Input, InputProps } from './Input';
 
 // メタデータの定義とexport default
 const meta: Meta = {

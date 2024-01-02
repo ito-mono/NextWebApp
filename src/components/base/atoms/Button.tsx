@@ -26,7 +26,7 @@ export type ButtonProps = {
   onClick?: () => void;
 };
 
-export default function Button({
+export function Button({
   children,
   variant = 'primary',
   size = 'md',

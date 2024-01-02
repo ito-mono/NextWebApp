@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react';
-import WindowSizeInputForm, { WindowSizeInputFormProps } from './WindowSizeInputForm';
+import { WindowSizeInputForm, WindowSizeInputFormProps } from './WindowSizeInputForm';
 
 // メタデータの定義とexport default
 const meta: Meta = {

@@ -37,7 +37,7 @@ export type InputProps = {
   align?: keyof typeof aligns;
 };
 
-export default function Input({
+export function Input({
   label,
   type = 'text',
   width = 6,

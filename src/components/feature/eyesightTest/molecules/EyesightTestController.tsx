@@ -1,10 +1,10 @@
 'use client';
 
 import { useState } from 'react';
-import LandoltRingImage, { LandoltRingImageProps, directions } from '../atom/LandoltRingImage';
-import Button from '../../../base/atoms/Button';
+import { LandoltRingImage, LandoltRingImageProps, directions } from '../atom/LandoltRingImage';
+import { Button } from '../../../base/atoms/Button';
 
-export default function VisionTest() {
+export function EyesightTestController() {
   // ユーザーの入力を管理するための状態
   const [direction, setDirection] = useState('up');
   const [distance, setDistance] = useState(1);

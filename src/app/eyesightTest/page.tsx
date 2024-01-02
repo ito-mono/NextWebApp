@@ -1,5 +1,5 @@
-import Link from '@/components/base/atoms/Link';
-import EyesightTestController from '@/components/feature/eyesightTest/molecules/EyesightTestController';
+import { Link } from '@/components/base';
+import { EyesightTestController } from '@/components/feature/eyesightTest';
 
 export default function EyesightTest() {
   return (
