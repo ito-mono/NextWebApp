@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import LandoltRingImage, { LandoltRingImageProps, directions } from '../atom/LandoltRingImage';
-import Button from '@/components/base/atoms/Button';
+import Button from '../../../base/atoms/Button';
 
 export default function VisionTest() {
   // ユーザーの入力を管理するための状態
