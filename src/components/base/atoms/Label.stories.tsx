@@ -1,20 +1,19 @@
 import { Meta, StoryObj } from '@storybook/react';
 
-import { Link, LinkProps } from './Link';
+import { Label, LabelProps } from './Label';
 
 // メタデータの定義とexport default
 const meta: Meta = {
-  title: 'Link',
-  component: Link,
+  title: 'Label',
+  component: Label,
 };
 export default meta;
 
 // Storyの定義
-type Story = StoryObj<LinkProps>;
+type Story = StoryObj<LabelProps>;
 
 export const Basic: Story = {
   args: {
-    children: 'Link',
-    href: '',
+    children: 'Label',
   },
 };

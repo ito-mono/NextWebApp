@@ -1,7 +1,8 @@
 'use client';
 
 import { useState } from 'react';
-import { Input } from '@/components/base';
+
+import { Container, FlexItem, Label, NumberInput } from '@/components/base';
 
 export type WindowSizeInputFormProps = {};
 
@@ -12,7 +13,7 @@ export function WindowSizeInputForm() {
   const [isError, setIsError] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     if (width <= 0 || height <= 0) {
       setIsError(true);
@@ -20,17 +21,26 @@ export function WindowSizeInputForm() {
       return;
     }
     setIsSubmit(true);
-  };
+  }
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <Input label='Width' value='a'></Input>
-        </div>
-        <button type='submit'>設定</button>
-      </form>
-      {isError && <p>{errorMessage}</p>}
-    </div>
+    <Container isFlex flexDirection='col'>
+      <Container isFlex flexDirection='row'>
+        <FlexItem>
+          <Label>幅</Label>
+        </FlexItem>
+        <FlexItem>
+          <NumberInput value={width} setValue={setWidth}></NumberInput>
+        </FlexItem>
+      </Container>
+      <Container isFlex flexDirection='row'>
+        <FlexItem>
+          <Label>高さ</Label>
+        </FlexItem>
+        <FlexItem>
+          <NumberInput value={height} setValue={setHeight}></NumberInput>
+        </FlexItem>
+      </Container>
+    </Container>
   );
 }

@@ -1,7 +1,7 @@
 'use client';
 
-import Image from 'next/image';
 import clsx from 'clsx';
+import Image from 'next/image';
 
 export const directions = {
   up: 'rotate-0',
@@ -24,9 +24,9 @@ const eyesights = [
 
 // propsの型定義
 export type LandoltRingImageProps = {
-  windowWidth: number;
-  windowHeight: number;
-  inch: number;
+  windowWidth?: number;
+  windowHeight?: number;
+  inch?: number;
   direction: keyof typeof directions;
   distance: (typeof distances)[number];
   eyesight: (typeof eyesights)[number];
