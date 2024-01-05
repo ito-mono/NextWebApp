@@ -1,7 +1,8 @@
 'use client';
 
 import { useState } from 'react';
-import { NumberInput } from '@/components/base';
+
+import { Container, FlexItem, Label, NumberInput } from '@/components/base';
 
 export type WindowSizeInputFormProps = {};
 
@@ -23,14 +24,23 @@ export function WindowSizeInputForm() {
   }
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <NumberInput label='Width' value='0' onChange={setWidth}></NumberInput>
-        </div>
-        <button type='submit'>設定</button>
-      </form>
-      {isError && <p>{errorMessage}</p>}
-    </div>
+    <Container isFlex flexDirection='col'>
+      <Container isFlex flexDirection='row'>
+        <FlexItem>
+          <Label>幅</Label>
+        </FlexItem>
+        <FlexItem>
+          <NumberInput value={width} setValue={setWidth}></NumberInput>
+        </FlexItem>
+      </Container>
+      <Container isFlex flexDirection='row'>
+        <FlexItem>
+          <Label>高さ</Label>
+        </FlexItem>
+        <FlexItem>
+          <NumberInput value={height} setValue={setHeight}></NumberInput>
+        </FlexItem>
+      </Container>
+    </Container>
   );
 }

@@ -24,9 +24,9 @@ const eyesights = [
 
 // propsの型定義
 export type LandoltRingImageProps = {
-  windowWidth: number;
-  windowHeight: number;
-  inch: number;
+  windowWidth?: number;
+  windowHeight?: number;
+  inch?: number;
   direction: keyof typeof directions;
   distance: (typeof distances)[number];
   eyesight: (typeof eyesights)[number];

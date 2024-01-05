@@ -1,7 +1,10 @@
 'use client';
 
 import clsx from 'clsx';
+
 import { Rounds } from '@/components/Utility/TailwindUtility';
+
+const types = ['button', 'submit', 'reset'] as const;
 
 const variants = {
   primary: 'bg-blue-600 text-white',
@@ -15,15 +18,17 @@ const sizes = {
 };
 
 export type ButtonProps = {
+  children?: React.ReactNode;
+  type?: (typeof types)[number];
   variant?: keyof typeof variants;
   size?: keyof typeof sizes;
   isRounded?: boolean;
-  children?: React.ReactNode;
   onClick?: () => void;
 };
 
 export function Button({
   children,
+  type = 'button',
   variant = 'primary',
   size = 'md',
   isRounded = true,
@@ -32,10 +37,8 @@ export function Button({
   const classNames = clsx(variants[variant], sizes[size], isRounded ? Rounds[size] : null);
 
   return (
-    <div>
-      <button className={classNames} {...props}>
-        {children}
-      </button>
-    </div>
+    <button type={type} className={classNames} {...props}>
+      {children}
+    </button>
   );
 }

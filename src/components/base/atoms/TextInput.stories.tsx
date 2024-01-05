@@ -1,6 +1,10 @@
-import { Meta, StoryObj } from '@storybook/react';
-import { TextInput, TextInputProps } from './TextInput';
 import { useState } from 'react';
+
+import { Meta, StoryObj } from '@storybook/react';
+
+import { TextInput, TextInputProps } from './TextInput';
+
+import { Label } from '@/components/base';
 
 // メタデータの定義とexport default
 const meta: Meta = {
@@ -13,37 +17,86 @@ export default meta;
 type Story = StoryObj<TextInputProps>;
 
 export const Basic: Story = {
-  args: {
-    value: 'value',
+  args: {},
+  render: function Comp({ ...args }) {
+    const [value, setValue] = useState('value');
+    return <TextInput {...args} value={value} setValue={setValue}></TextInput>;
   },
-  decorators: [
-    (Story) => {
-      const [value, setValue] = useState('');
-      return <Story args={{ value, setValue }} />;
-    },
-  ],
 };
 
 export const WithLabel: Story = {
-  args: {
-    label: 'label',
-    value: 'value',
-  },
-};
-
-export const AlignCenter: Story = {
-  args: {
-    label: 'label',
-    value: 'value',
-    align: 'center',
+  args: {},
+  render: function Comp({ ...args }) {
+    const [value, setValue] = useState('value');
+    return (
+      <>
+        <Label>label</Label>
+        <TextInput {...args} value={value} setValue={setValue}></TextInput>
+      </>
+    );
   },
 };
 
 export const Large: Story = {
   args: {
-    label: 'label',
-    value: 'value',
     width: '96',
     size: 'lg',
+  },
+  render: function Comp({ ...args }) {
+    const [value, setValue] = useState('value');
+    return <TextInput {...args} value={value} setValue={setValue}></TextInput>;
+  },
+};
+
+export const Left: Story = {
+  args: {
+    width: '48',
+    align: 'left',
+  },
+  render: function Comp({ ...args }) {
+    const [value, setValue] = useState('value');
+    return <TextInput {...args} value={value} setValue={setValue}></TextInput>;
+  },
+};
+
+export const Center: Story = {
+  args: {
+    width: '48',
+    align: 'center',
+  },
+  render: function Comp({ ...args }) {
+    const [value, setValue] = useState('value');
+    return <TextInput {...args} value={value} setValue={setValue}></TextInput>;
+  },
+};
+
+export const Right: Story = {
+  args: {
+    width: '48',
+    align: 'right',
+  },
+  render: function Comp({ ...args }) {
+    const [value, setValue] = useState('value');
+    return <TextInput {...args} value={value} setValue={setValue}></TextInput>;
+  },
+};
+
+export const Full: Story = {
+  args: {
+    width: 'full',
+  },
+  render: function Comp({ ...args }) {
+    const [value, setValue] = useState('value');
+    return <TextInput {...args} value={value} setValue={setValue}></TextInput>;
+  },
+};
+
+export const Half: Story = {
+  args: {
+    width: '1/2',
+  },
+  render: function Comp({ ...args }) {
+    const [value, setValue] = useState('value');
+    return <TextInput {...args} value={value} setValue={setValue}></TextInput>;
   },
 };

@@ -1,5 +1,8 @@
+import { Dispatch, SetStateAction } from 'react';
+
 import clsx from 'clsx';
-import { Widths, Aligns } from '@/components/Utility/TailwindUtility';
+
+import { Widths, TextAligns } from '@/components/Utility/TailwindUtility';
 
 const sizes = {
   sm: 'py-2 px-4 text-sm',
@@ -8,33 +11,33 @@ const sizes = {
 } as const;
 
 export type TextInputProps = {
-  label?: string;
   value: string;
-  setValue: (e: any) => void;
+  setValue: Dispatch<SetStateAction<string>>;
   width?: keyof typeof Widths;
   size?: keyof typeof sizes;
-  align?: keyof typeof Aligns;
+  align?: keyof typeof TextAligns;
 };
 
 export function TextInput({
-  label,
+  setValue,
   width = '20',
   size = 'sm',
   align = 'left',
   ...props
 }: TextInputProps) {
-  const labelClassNames = clsx('', sizes[size]);
   const inputClassNames = clsx(
     'border border-gray-300 rounded-md',
     Widths[width],
     sizes[size],
-    Aligns[align],
+    TextAligns[align],
   );
 
   return (
-    <div>
-      {label && <label className={labelClassNames}>{label}</label>}
-      <input type='text' className={inputClassNames} {...props}></input>
-    </div>
+    <input
+      type='text'
+      className={inputClassNames}
+      onChange={(e) => setValue(e.target.value)}
+      {...props}
+    ></input>
   );
 }
