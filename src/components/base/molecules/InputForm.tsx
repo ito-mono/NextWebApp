@@ -9,9 +9,10 @@ export type InputFormProps = {
 };
 
 export function InputForm({ direction = 'col', formItemsProps, ...props }: InputFormProps) {
-  const itemNodes: React.ReactNode[] = [];
-
-  formItemsProps?.forEach((itemProps) => itemNodes.push(<FormItem {...itemProps}></FormItem>));
+  // MEMO: keyにindexを指定するのはアンチパターンだが、フォームの項目自体は静的なので問題はない
+  const itemNodes = formItemsProps?.map((itemProps, index) => {
+    return <FormItem key={index} {...itemProps}></FormItem>;
+  });
 
   return (
     <Container isFlex flexDirection={direction}>

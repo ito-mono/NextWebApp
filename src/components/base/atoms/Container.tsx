@@ -3,6 +3,7 @@ import clsx from 'clsx';
 import {
   AlignItems,
   FlexDirections,
+  Heights,
   Justifies,
   Widths,
 } from '@/components/Utility/TailwindUtility';
@@ -10,6 +11,7 @@ import {
 export type ContainerProps = {
   children?: React.ReactNode;
   width?: keyof typeof Widths;
+  height?: keyof typeof Widths;
   isFlex?: boolean;
   flexDirection?: keyof typeof FlexDirections;
   justify?: keyof typeof Justifies;
@@ -18,7 +20,8 @@ export type ContainerProps = {
 
 export function Container({
   children,
-  width = '96',
+  width = 'full',
+  height = '20',
   isFlex = false,
   flexDirection = 'row',
   justify = 'between',
@@ -27,6 +30,7 @@ export function Container({
   const classNames = clsx(
     'container',
     Widths[width],
+    Heights[height],
     isFlex && 'flex',
     isFlex && FlexDirections[flexDirection],
     isFlex && Justifies[justify],
