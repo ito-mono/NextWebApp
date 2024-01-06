@@ -4,7 +4,7 @@ import { Link, LinkProps } from './Link';
 
 // メタデータの定義とexport default
 const meta: Meta = {
-  title: 'Link',
+  title: 'Element/Link',
   component: Link,
 };
 export default meta;

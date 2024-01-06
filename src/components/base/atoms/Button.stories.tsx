@@ -4,7 +4,7 @@ import { Button, ButtonProps } from './Button';
 
 // メタデータの定義とexport default
 const meta: Meta = {
-  title: 'Button',
+  title: 'Element/Button',
   component: Button,
 };
 export default meta;

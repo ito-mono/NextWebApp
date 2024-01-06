@@ -23,3 +23,4 @@ storybook: [https://next-web-app-sb.vercel.app/](https://next-web-app-sb.vercel.
 ## ドキュメント
 
 [環境構築ドキュメント](/docs/setup.md)
+[コーディング規約](/docs/codingRule.md)

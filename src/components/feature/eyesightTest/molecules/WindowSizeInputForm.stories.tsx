@@ -4,7 +4,7 @@ import { WindowSizeInputForm, WindowSizeInputFormProps } from './WindowSizeInput
 
 // メタデータの定義とexport default
 const meta: Meta = {
-  title: 'WindowSizeInputForm',
+  title: 'EyesightTest/WindowSizeInputForm',
   component: WindowSizeInputForm,
 };
 export default meta;

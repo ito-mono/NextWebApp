@@ -4,7 +4,7 @@ import { Label, LabelProps } from './Label';
 
 // メタデータの定義とexport default
 const meta: Meta = {
-  title: 'Label',
+  title: 'Element/Label',
   component: Label,
 };
 export default meta;

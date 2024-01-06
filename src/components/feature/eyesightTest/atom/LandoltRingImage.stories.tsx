@@ -4,7 +4,7 @@ import { LandoltRingImage, LandoltRingImageProps } from './LandoltRingImage';
 
 // メタデータの定義とexport default
 const meta: Meta = {
-  title: 'LandoltRingImage',
+  title: 'EyesightTest/LandoltRingImage',
   component: LandoltRingImage,
 };
 export default meta;

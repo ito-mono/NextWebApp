@@ -1,4 +1,3 @@
-import { Link } from '@/components/base';
 import { EyesightTestController, Header } from '@/components/feature/eyesightTest';
 
 export default function EyesightTest() {
