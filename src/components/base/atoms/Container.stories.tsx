@@ -4,7 +4,7 @@ import { Container, ContainerProps } from './Container';
 
 // メタデータの定義とexport default
 const meta: Meta = {
-  title: 'Container',
+  title: 'Element/Container',
   component: Container,
 };
 export default meta;

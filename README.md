@@ -1,36 +1,26 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# NextWebApp
+
+`TypeScript` + `React.js` + `Next` で視力検査用のWebサイト作成中...  
+またUIカタログツールとして `Storybook` を使用
 
 ## Getting Started
 
-First, run the development server:
+### 開発環境
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+`npm run dev`
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Storybook
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+`npm run sb`
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## 公開中のサイト
 
-## Learn More
+`Vercel` で `master` ブランチに対してCDパイプラインを設定済み
 
-To learn more about Next.js, take a look at the following resources:
+main: [https://next-web-app-main.vercel.app/](https://next-web-app-main.vercel.app/)  
+storybook: [https://next-web-app-sb.vercel.app/](https://next-web-app-sb.vercel.app/)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## ドキュメント
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+[環境構築ドキュメント](/docs/setup.md)
+[コーディング規約](/docs/codingRule.md)

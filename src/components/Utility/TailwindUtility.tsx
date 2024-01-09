@@ -239,3 +239,16 @@ export const Rounds = {
   md: 'rounded-md',
   lg: 'rounded-lg',
 } as const;
+
+// justify-content
+// justify?: keyof typeof Justifies;
+export const Justifies = {
+  normal: 'justify-normal',
+  start: 'justify-start',
+  end: 'justify-end',
+  center: 'justify-center',
+  between: 'justify-between',
+  around: 'justify-around',
+  evenly: 'justify-evenly',
+  stretch: 'justify-stretch',
+} as const;

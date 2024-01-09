@@ -8,7 +8,7 @@ import { Label } from '@/components/base';
 
 // メタデータの定義とexport default
 const meta: Meta = {
-  title: 'NumberInput',
+  title: 'Element/Input/NumberInput',
   component: NumberInput,
 };
 export default meta;
@@ -16,28 +16,25 @@ export default meta;
 // Storyの定義
 type Story = StoryObj<NumberInputProps>;
 
+// Hook を使う場合のRender関数
+function Render({ ...args }) {
+  const [value, setValue] = useState(0);
+  return <NumberInput {...args} value={value} setValue={setValue}></NumberInput>;
+}
+
+// Stories
 export const Basic: Story = {
   args: {},
-  render: function Comp({ ...args }) {
-    const [value, setValue] = useState(0);
-    return <NumberInput {...args} value={value} setValue={setValue}></NumberInput>;
-  },
+  render: Render,
 };
 
 export const MinAndMax: Story = {
-  args: {
-    min: 100,
-    max: 999,
-  },
-  render: function Comp({ ...args }) {
-    const [value, setValue] = useState(0);
-    return <NumberInput {...args} value={value} setValue={setValue}></NumberInput>;
-  },
+  render: Render,
 };
 
 export const WithLabel: Story = {
   args: {},
-  render: function Comp({ ...args }) {
+  render: function RenderWithLabel({ ...args }) {
     const [value, setValue] = useState(0);
     return (
       <>
@@ -53,10 +50,7 @@ export const Large: Story = {
     width: '96',
     size: 'lg',
   },
-  render: function Comp({ ...args }) {
-    const [value, setValue] = useState(0);
-    return <NumberInput {...args} value={value} setValue={setValue}></NumberInput>;
-  },
+  render: Render,
 };
 
 export const Left: Story = {
@@ -64,10 +58,7 @@ export const Left: Story = {
     width: '48',
     align: 'left',
   },
-  render: function Comp({ ...args }) {
-    const [value, setValue] = useState(0);
-    return <NumberInput {...args} value={value} setValue={setValue}></NumberInput>;
-  },
+  render: Render,
 };
 
 export const Center: Story = {
@@ -75,10 +66,7 @@ export const Center: Story = {
     width: '48',
     align: 'center',
   },
-  render: function Comp({ ...args }) {
-    const [value, setValue] = useState(0);
-    return <NumberInput {...args} value={value} setValue={setValue}></NumberInput>;
-  },
+  render: Render,
 };
 
 export const Right: Story = {
@@ -86,28 +74,19 @@ export const Right: Story = {
     width: '48',
     align: 'right',
   },
-  render: function Comp({ ...args }) {
-    const [value, setValue] = useState(0);
-    return <NumberInput {...args} value={value} setValue={setValue}></NumberInput>;
-  },
+  render: Render,
 };
 
 export const Full: Story = {
   args: {
     width: 'full',
   },
-  render: function Comp({ ...args }) {
-    const [value, setValue] = useState(0);
-    return <NumberInput {...args} value={value} setValue={setValue}></NumberInput>;
-  },
+  render: Render,
 };
 
 export const Half: Story = {
   args: {
     width: '1/2',
   },
-  render: function Comp({ ...args }) {
-    const [value, setValue] = useState(0);
-    return <NumberInput {...args} value={value} setValue={setValue}></NumberInput>;
-  },
+  render: Render,
 };

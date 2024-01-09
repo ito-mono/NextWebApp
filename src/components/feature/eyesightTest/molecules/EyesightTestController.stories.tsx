@@ -4,7 +4,7 @@ import { EyesightTestController } from '.';
 
 // メタデータの定義とexport default
 const meta: Meta = {
-  title: 'EyesightTestController',
+  title: 'EyesightTest/EyesightTestController',
   component: EyesightTestController,
 };
 export default meta;
