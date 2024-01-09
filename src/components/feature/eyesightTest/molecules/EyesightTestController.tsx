@@ -1,40 +1,51 @@
 'use client';
 
-import { useState } from 'react';
+import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 
-import { Button } from '../../../base/atoms/Button';
-import { LandoltRingImage, LandoltRingImageProps, directions } from '../atom/LandoltRingImage';
+import { LandoltRingImage, LandoltRingImageProps, getRandomDirection } from '../';
 
-export function EyesightTestController() {
+import { Monitor } from '@/components/Utility/Monitor';
+import { NumberInputProps } from '@/components/base';
+import { FormItem } from '@/components/base/molecules';
+
+export type EyesightTestControllerProps = {
+  monitor: Monitor;
+};
+
+export function EyesightTestController({ monitor, ...props }: EyesightTestControllerProps) {
   // ユーザーの入力を管理するための状態
-  const [direction, setDirection] = useState('up');
-  const [distance, setDistance] = useState(1);
-  const [eyesight, setEyesight] = useState(0.1);
+  const [direction, setDirection] = useState<LandoltRingImageProps['direction']>('up');
+  const [distance, setDistance] = useState<LandoltRingImageProps['distance']>(3);
+  const [eyesight, setEyesight] = useState<LandoltRingImageProps['eyesight']>(0.1);
 
-  function random() {
-    const keys = Object.keys(directions);
-    const d = keys[Math.floor(Math.random() * keys.length)];
-    setDirection(d);
-  }
-
-  const props: LandoltRingImageProps = {
-    windowWidth: 100,
-    windowHeight: 100,
-    inch: 1,
-    direction: direction as LandoltRingImageProps['direction'],
-    distance: 3,
-    eyesight: 1,
+  const imageProps: LandoltRingImageProps = {
+    monitor,
+    direction: direction,
+    distance: distance,
+    eyesight: eyesight,
+    ...props,
   };
 
-  // デバイスのスクリーンサイズ（例として固定値を使用）
-  const windowWidth = 1920;
-  const windowHeight = 1080;
-  const inch = 24.5;
+  // useEffect
+  // eyesightの値が変更されたら、方向をランダムに変更する
+  useEffect(() => {
+    setDirection(getRandomDirection());
+  }, [eyesight]);
+
+  const distanceInputProps: NumberInputProps = {
+    value: distance,
+    setValue: setDistance as Dispatch<SetStateAction<number>>,
+  };
+  const eyesightInputProps: NumberInputProps = {
+    value: distance,
+    setValue: setEyesight as Dispatch<SetStateAction<number>>,
+  };
 
   return (
-    <div>
-      <LandoltRingImage {...props}></LandoltRingImage>
-      <Button onClick={random}></Button>
-    </div>
+    <>
+      <FormItem label='距離' inputProps={distanceInputProps}></FormItem>
+      <FormItem label='視力' inputProps={eyesightInputProps}></FormItem>
+      <LandoltRingImage {...imageProps}></LandoltRingImage>
+    </>
   );
 }

@@ -1,9 +1,14 @@
 'use client';
 
+import { useEffect, useState } from 'react';
+
 import clsx from 'clsx';
 import Image from 'next/image';
 
-export const directions = {
+import { Monitor } from '@/components/Utility/Monitor';
+import { mmToPx } from '@/components/Utility/Pixel';
+
+const directions = {
   up: 'rotate-0',
   upRight: 'rotate-45',
   right: 'rotate-90',
@@ -24,9 +29,7 @@ const eyesights = [
 
 // propsの型定義
 export type LandoltRingImageProps = {
-  windowWidth?: number;
-  windowHeight?: number;
-  inch?: number;
+  monitor: Monitor;
   direction: keyof typeof directions;
   distance: (typeof distances)[number];
   eyesight: (typeof eyesights)[number];
@@ -34,9 +37,7 @@ export type LandoltRingImageProps = {
 
 // コンポーネントの定義
 export function LandoltRingImage({
-  windowWidth = 1920,
-  windowHeight = 1080,
-  inch = 24.5,
+  monitor,
   direction,
   distance,
   eyesight,
@@ -45,10 +46,7 @@ export function LandoltRingImage({
   const alt = 'Landolt Ring';
   const src = '/LandoltRing.png';
 
-  // ランドルト環のサイズを計算
-  const dpi = calcDpi(windowWidth, windowHeight, inch);
-  let size = (7.5 / eyesight) * (distance / 5);
-  size = mmToPx(size, dpi);
+  const size = calcSize(eyesight, distance, monitor.dpi);
 
   const classNames = clsx(directions[direction]);
 
@@ -57,21 +55,18 @@ export function LandoltRingImage({
   );
 }
 
-/* 以下より関数定義 */
+/* 関数定義 */
+// ランドルト環のサイズを算出する関数
+function calcSize(eyesight: number, distance: number, dpi: number): number {
+  if (eyesight === 0) return 0;
 
-// DPIを算出する関数
-function calcDpi(width: number, height: number, inch: number) {
-  if (inch === 0) return 0;
-
-  // 対角解像度を計算（ピタゴラスの定理）
-  var diagonal = Math.sqrt(Math.pow(width, 2) + Math.pow(height, 2));
-
-  var dpi = diagonal / inch;
-  return dpi;
+  const size = mmToPx((7.5 / eyesight) * (distance / 5), dpi);
+  return size;
 }
 
-// mmをpxに変換する関数
-function mmToPx(mm: number, dpi: number) {
-  var mmPerInch = 25.4; // 1インチあたりのミリメートル
-  return (mm / mmPerInch) * dpi;
+// ランダムな方向を返す関数
+export function getRandomDirection(): keyof typeof directions {
+  const keys = Object.keys(directions) as Array<keyof typeof directions>;
+  const index = Math.floor(Math.random() * keys.length);
+  return keys[index];
 }

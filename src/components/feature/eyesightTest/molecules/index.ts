@@ -1,3 +1,3 @@
 export * from './EyesightTestController';
-export * from './WindowSizeInputForm';
-export * from './Header';
+export * from './MonitorSizeInputForm';
+export * from './EyesightTestHeader';

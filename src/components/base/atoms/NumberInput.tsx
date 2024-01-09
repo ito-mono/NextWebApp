@@ -1,4 +1,6 @@
-import { ChangeEvent, Dispatch, SetStateAction } from 'react';
+'use client';
+
+import { Dispatch, SetStateAction, useState } from 'react';
 
 import clsx from 'clsx';
 
@@ -9,13 +11,11 @@ const sizes = {
   md: 'py-2 px-6 text-md',
   lg: 'py-3 px-8 text-lg',
 } as const;
+const pattern = /^\d+$/;
 
 export type NumberInputProps = {
   value: number;
   setValue: Dispatch<SetStateAction<number>>;
-  min?: number;
-  max?: number;
-  step?: number;
   width?: keyof typeof Widths;
   size?: keyof typeof sizes;
   align?: keyof typeof TextAligns;
@@ -24,45 +24,33 @@ export type NumberInputProps = {
 export function NumberInput({
   value,
   setValue,
-  min = 0,
-  max = Number.MAX_SAFE_INTEGER,
-  step = 1,
   width = '20',
   size = 'sm',
   align = 'left',
   ...props
 }: NumberInputProps) {
-  const inputClassNames = clsx(
+  const [localValue, setLocalValue] = useState(`${value}`);
+
+  const classNames = clsx(
     'border border-gray-300 rounded-md',
     Widths[width],
     sizes[size],
     TextAligns[align],
   );
 
-  /* TODO: 数値型を扱う場合も type='text' にしといた方がいいらしい...が とりあえず保留 */
   return (
     <input
-      type='number'
-      className={inputClassNames}
-      value={value > min ? value : min}
-      onChange={(e) => {
-        const v = parseInt(e.target.value);
-        if (isNaN(v) || v <= min) {
-          setValues(min, e);
-        } else if (v >= max) {
-          setValues(max, e);
-        } else {
-          setValues(v, e);
-        }
-      }}
-      step={step}
-      {...props}
+      type='text'
+      value={localValue}
+      className={classNames}
+      onChange={(e) => onchange(e.target.value)}
     ></input>
   );
 
-  // value と e.target.value の値を v に更新
-  function setValues(v: number, e: ChangeEvent<HTMLInputElement>) {
-    setValue(v);
-    e.target.value = v.toString();
+  function onchange(value: string) {
+    console.log(+value);
+    console.log(Number(value));
+    console.log(pattern.test(value));
+    setLocalValue(value);
   }
 }

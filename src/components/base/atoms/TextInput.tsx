@@ -25,7 +25,7 @@ export function TextInput({
   align = 'left',
   ...props
 }: TextInputProps) {
-  const inputClassNames = clsx(
+  const classNames = clsx(
     'border border-gray-300 rounded-md',
     Widths[width],
     sizes[size],
@@ -35,7 +35,7 @@ export function TextInput({
   return (
     <input
       type='text'
-      className={inputClassNames}
+      className={classNames}
       onChange={(e) => setValue(e.target.value)}
       {...props}
     ></input>

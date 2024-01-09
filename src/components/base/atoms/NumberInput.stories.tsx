@@ -29,10 +29,6 @@ export const Basic: Story = {
 };
 
 export const MinAndMax: Story = {
-  args: {
-    min: 100,
-    max: 999,
-  },
   render: Render,
 };
 
