@@ -11,11 +11,12 @@ const sizes = {
   md: 'py-2 px-6 text-md',
   lg: 'py-3 px-8 text-lg',
 } as const;
-const pattern = /^\d+$/;
 
 export type NumberInputProps = {
   value: number;
   setValue: Dispatch<SetStateAction<number>>;
+  min?: number;
+  max?: number;
   width?: keyof typeof Widths;
   size?: keyof typeof sizes;
   align?: keyof typeof TextAligns;
@@ -24,12 +25,14 @@ export type NumberInputProps = {
 export function NumberInput({
   value,
   setValue,
+  min = 0,
+  max = Number.MAX_SAFE_INTEGER,
   width = '20',
   size = 'sm',
-  align = 'left',
+  align = 'right',
   ...props
 }: NumberInputProps) {
-  const [localValue, setLocalValue] = useState(`${value}`);
+  const [localValue, setLocalValue] = useState(value.toString());
 
   const classNames = clsx(
     'border border-gray-300 rounded-md',
@@ -42,15 +45,22 @@ export function NumberInput({
     <input
       type='text'
       value={localValue}
-      className={classNames}
       onChange={(e) => onchange(e.target.value)}
+      className={classNames}
     ></input>
   );
 
   function onchange(value: string) {
-    console.log(+value);
-    console.log(Number(value));
-    console.log(pattern.test(value));
-    setLocalValue(value);
+    const pattern = /^\d+(\.\d+)?$/;
+    const isMatch = pattern.test(value);
+    const num = Number(value);
+
+    // 数値の場合はvalueを更新
+    if (isNaN(num)) return;
+    else setValue(num);
+
+    // isMatchの結果で、localValue に num か value のどちらかをセットする
+    if (isMatch) setLocalValue(num.toString());
+    else setLocalValue(value);
   }
 }

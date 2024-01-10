@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 
-import { EyesightTestController } from '.';
+import { EyesightTestController, EyesightTestControllerProps } from '.';
 
 // メタデータの定義とexport default
 const meta: Meta = {
@@ -10,6 +10,11 @@ const meta: Meta = {
 export default meta;
 
 // Storyの定義
-type Story = StoryObj;
+type Story = StoryObj<EyesightTestControllerProps>;
 
-export const Basic: Story = {};
+export const Basic: Story = {
+  args: {},
+  render: function Render({ ...args }) {
+    return <EyesightTestController {...args}></EyesightTestController>;
+  },
+};

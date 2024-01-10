@@ -1,12 +1,10 @@
 'use client';
 
-import { Dispatch, SetStateAction, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { LandoltRingImage, LandoltRingImageProps, getRandomDirection } from '../';
 
 import { Monitor } from '@/components/Utility/Monitor';
-import { NumberInputProps } from '@/components/base';
-import { FormItem } from '@/components/base/molecules';
 
 export type EyesightTestControllerProps = {
   monitor: Monitor;
@@ -31,20 +29,8 @@ export function EyesightTestController({ monitor, ...props }: EyesightTestContro
   useEffect(() => {
     setDirection(getRandomDirection());
   }, [eyesight]);
-
-  const distanceInputProps: NumberInputProps = {
-    value: distance,
-    setValue: setDistance as Dispatch<SetStateAction<number>>,
-  };
-  const eyesightInputProps: NumberInputProps = {
-    value: distance,
-    setValue: setEyesight as Dispatch<SetStateAction<number>>,
-  };
-
   return (
     <>
-      <FormItem label='距離' inputProps={distanceInputProps}></FormItem>
-      <FormItem label='視力' inputProps={eyesightInputProps}></FormItem>
       <LandoltRingImage {...imageProps}></LandoltRingImage>
     </>
   );

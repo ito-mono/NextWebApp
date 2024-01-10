@@ -1,5 +1,3 @@
-import { Dispatch, SetStateAction } from 'react';
-
 import clsx from 'clsx';
 
 import { Widths, TextAligns } from '@/components/Utility/TailwindUtility';
@@ -11,20 +9,13 @@ const sizes = {
 } as const;
 
 export type TextInputProps = {
-  value: string;
-  setValue: Dispatch<SetStateAction<string>>;
+  context?: string;
   width?: keyof typeof Widths;
   size?: keyof typeof sizes;
   align?: keyof typeof TextAligns;
 };
 
-export function TextInput({
-  setValue,
-  width = '20',
-  size = 'sm',
-  align = 'left',
-  ...props
-}: TextInputProps) {
+export function TextInput({ width = '20', size = 'sm', align = 'left', ...props }: TextInputProps) {
   const classNames = clsx(
     'border border-gray-300 rounded-md',
     Widths[width],
@@ -32,12 +23,5 @@ export function TextInput({
     TextAligns[align],
   );
 
-  return (
-    <input
-      type='text'
-      className={classNames}
-      onChange={(e) => setValue(e.target.value)}
-      {...props}
-    ></input>
-  );
+  return <input type='text' className={classNames}></input>;
 }

@@ -46,6 +46,7 @@ export function LandoltRingImage({
   const alt = 'Landolt Ring';
   const src = '/LandoltRing.png';
 
+  console.log(monitor);
   const size = calcSize(eyesight, distance, monitor.dpi);
 
   const classNames = clsx(directions[direction]);

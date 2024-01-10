@@ -1,6 +1,3 @@
-import { render, screen } from '@testing-library/react';
-import '@testing-library/jest-dom';
-
 describe('Hello World', () => {
   test('Hello', () => {
     expect('Hello' + ' World' + ' !').toBe('Hello World !');

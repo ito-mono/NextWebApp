@@ -2,24 +2,24 @@ import { useState } from 'react';
 
 import { Meta, StoryObj } from '@storybook/react';
 
-import { NumberInput, NumberInputProps } from './NumberInput';
+import { TextInput, TextInputProps } from './TextInput';
 
 import { Label } from '@/components/base';
 
 // メタデータの定義とexport default
 const meta: Meta = {
-  title: 'Element/Input/NumberInput',
-  component: NumberInput,
+  title: 'SomeForms/useStateProps/TextInput',
+  component: TextInput,
 };
 export default meta;
 
 // Storyの定義
-type Story = StoryObj<NumberInputProps>;
+type Story = StoryObj<TextInputProps>;
 
 // Hook を使う場合のRender関数
 function Render({ ...args }) {
-  const [value, setValue] = useState(0);
-  return <NumberInput {...args} value={value} setValue={setValue}></NumberInput>;
+  const [value, setValue] = useState('value');
+  return <TextInput {...args}></TextInput>;
 }
 
 // Stories
@@ -28,18 +28,14 @@ export const Basic: Story = {
   render: Render,
 };
 
-export const MinAndMax: Story = {
-  render: Render,
-};
-
 export const WithLabel: Story = {
   args: {},
   render: function RenderWithLabel({ ...args }) {
-    const [value, setValue] = useState(0);
+    const [value, setValue] = useState('value');
     return (
       <>
         <Label>label</Label>
-        <NumberInput {...args} value={value} setValue={setValue}></NumberInput>
+        <TextInput {...args}></TextInput>
       </>
     );
   },
