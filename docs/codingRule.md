@@ -12,12 +12,41 @@
 | 変数             | camelCase        |
 | 定数             | UPPER_SNAKE_CASE |
 
+## コンポーネント定義
+
+基本名前付きエクスポートを行う  
+→ index.tsで再エクスポートするのが楽になるため
+
+### 例
+
+#### 名前付きエクスポートの場合
+
+```tsx:Component.tsx
+export type ComponentProps = {};
+export function Component(props:ComponentProps) {};
+```
+
+```ts:index.ts
+export * from './Component.tsx'
+```
+
+#### デフォルトエクスポートの場合
+
+```tsx:Component.tsx
+export type ComponentProps = {};
+export default function Component(props:ComponentProps) {};
+```
+
+```ts:index.ts
+export { default as Component, ComponentProps } from './Component'
+```
+
 ## 関数
 
 基本 function で定義する  
 `function name()`
 
-コールバック関数のみアロー関数
+コールバック関数のみ可読性重視でアロー関数
 
 ## JSX
 

@@ -21,7 +21,7 @@ export type ContainerProps = {
 export function Container({
   children,
   width = 'full',
-  height = '20',
+  height = 'auto',
   isFlex = false,
   flexDirection = 'row',
   justify = 'between',

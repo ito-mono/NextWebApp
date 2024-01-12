@@ -1,7 +1,5 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-
 import clsx from 'clsx';
 import Image from 'next/image';
 
@@ -46,12 +44,21 @@ export function LandoltRingImage({
   const alt = 'Landolt Ring';
   const src = '/LandoltRing.png';
 
+  console.log(monitor);
   const size = calcSize(eyesight, distance, monitor.dpi);
 
   const classNames = clsx(directions[direction]);
 
   return (
-    <Image alt={alt} src={src} width={size} height={size} className={classNames} {...props}></Image>
+    <Image
+      alt={alt}
+      src={src}
+      width={size}
+      height={size}
+      className={classNames}
+      priority
+      {...props}
+    ></Image>
   );
 }
 

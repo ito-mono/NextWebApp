@@ -2,21 +2,19 @@
 
 import { MonitorSizeInputForm, MonitorSizeInputFormProps } from '.';
 
-import { Monitor } from '@/components/Utility/Monitor';
+import { useMonitorReturn } from '@/components/Utility/Monitor';
 import { Container, FlexItem } from '@/components/base';
 
 export type EyesightTestHeaderProps = {
-  monitor: Monitor;
+  useMonitorReturn: useMonitorReturn;
 };
 
-export function EyesightTestHeader({ monitor, ...props }: EyesightTestHeaderProps) {
-  const formProps: MonitorSizeInputFormProps = {
-    monitor: monitor,
-  };
+export function EyesightTestHeader({ ...props }: EyesightTestHeaderProps) {
+  const formProps: MonitorSizeInputFormProps = { ...props };
 
   return (
     <header>
-      <Container isFlex width='full'>
+      <Container isFlex>
         <FlexItem>
           <h1>視力検査</h1>
         </FlexItem>

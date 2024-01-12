@@ -2,56 +2,80 @@
  * モニター用のカスタムフック
  *
  * Usage:
- *  const monitorProps: MonitorProps = { width: 1920, height: 1080, inch: 24 };
- *  const monitor = useMonitor(monitorProps);
+ *  const useMonitorProps: useMonitorProps = { width: 1920, height: 1080, inch: 24 };
+ *  const useMonitorReturn = useMonitor(usemonitorProps);
  *  Or
- *  const monitor = useMonitor({});
+ *  const useMonitorReturn = useMonitor();
+ *  Or
+ *  const [ monitor, ...setters ] = useMonitor();
+ *
+ *  etc...
  */
 'use client';
 
-import { Dispatch, SetStateAction, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
+// Monitorの型定義
 export type Monitor = {
   width: number;
-  setWidth: Dispatch<SetStateAction<number>>;
   height: number;
-  setHeight: Dispatch<SetStateAction<number>>;
   inch: number;
-  setInch: Dispatch<SetStateAction<number>>;
 
   dpi: number;
 };
 
-export type MonitorProps = {
+// useMonitorの返り値
+export type useMonitorReturn = {
+  monitor: Monitor;
+
+  setWidth: (width: number) => void;
+  setHeight: (height: number) => void;
+  setInch: (inch: number) => void;
+};
+
+// useMonitorの引数
+export type useMonitorProps = {
   width?: number;
   height?: number;
   inch?: number;
 };
 
-export function useMonitor({ width = 0, height = 0, inch = 0, ...props }: MonitorProps): Monitor {
-  const widthState = useState(width);
-  const heightState = useState(height);
-  const inchState = useState(inch);
+// デフォルト値
+const defaultMonitorProps = {
+  width: 1920,
+  height: 1080,
+  inch: 24,
 
-  const [dpi, setDpi] = useState(0);
+  dpi: 0,
+};
 
-  const monitor: Monitor = {
-    width: widthState[0],
-    setWidth: widthState[1],
-    height: heightState[0],
-    setHeight: heightState[1],
-    inch: inchState[0],
-    setInch: inchState[1],
-
-    dpi: dpi,
-  };
+// MonitorのStateを管理するカスタムフック
+export function useMonitor(props?: useMonitorProps): useMonitorReturn {
+  // dpiを計算してからuseStateを行う
+  const mergedProps = { ...defaultMonitorProps, ...props };
+  const dpi = calcDpi(mergedProps.width, mergedProps.height, mergedProps.inch);
+  const [monitor, setMonitor] = useState<Monitor>({ ...mergedProps, dpi });
 
   // width, height, inchのいずれかが変更されたらdpiを再計算する
   useEffect(() => {
-    setDpi(calcDpi(monitor.width, monitor.height, monitor.inch));
+    const dpi = calcDpi(monitor.width, monitor.height, monitor.inch);
+    setMonitor((prev) => ({ ...prev, dpi }));
   }, [monitor.width, monitor.height, monitor.inch]);
 
-  return monitor;
+  // 返り値
+  const useMonitorReturn: useMonitorReturn = { monitor, setWidth, setHeight, setInch };
+  return useMonitorReturn;
+
+  // セッター
+  function setWidth(width: number) {
+    setMonitor((prev) => ({ ...prev, width }));
+  }
+  function setHeight(height: number) {
+    setMonitor((prev) => ({ ...prev, height }));
+  }
+  function setInch(inch: number) {
+    setMonitor((prev) => ({ ...prev, inch }));
+  }
 }
 
 /* 関数定義 */
