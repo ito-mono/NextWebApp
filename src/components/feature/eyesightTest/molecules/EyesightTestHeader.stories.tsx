@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 
-import { EyesightTestHeader } from '.';
+import { EyesightTestHeader, EyesightTestHeaderProps } from '.';
 
 import { useMonitor } from '@/components/Utility/Monitor';
 
@@ -12,12 +12,12 @@ const meta: Meta = {
 export default meta;
 
 // Storyの定義
-type Story = StoryObj;
+type Story = StoryObj<EyesightTestHeaderProps>;
 
 export const Basic: Story = {
   args: {},
   render: function Render({ ...args }) {
-    const monitor = useMonitor({});
-    return <EyesightTestHeader monitor={monitor} {...args}></EyesightTestHeader>;
+    args.useMonitorReturn = useMonitor();
+    return <EyesightTestHeader {...args}></EyesightTestHeader>;
   },
 };

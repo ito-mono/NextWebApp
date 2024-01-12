@@ -5,6 +5,7 @@ import { Container, FlexItem, Label } from '@/components/base';
 
 export type FormItemProps = {
   label: React.ReactNode;
+  type: 'text' | 'number';
   inputProps: TextInputProps | NumberInputProps;
   direction?: keyof typeof FlexDirections;
   justify?: keyof typeof Justifies;
@@ -12,6 +13,7 @@ export type FormItemProps = {
 
 export function FormItem({
   label,
+  type,
   inputProps,
   direction = 'row',
   justify = 'start',
@@ -20,9 +22,9 @@ export function FormItem({
   let input;
 
   // 値の型に基づいて異なるインプットを表示;
-  if (typeof inputProps.value === 'string') {
+  if (type === 'text') {
     input = <TextInput {...(inputProps as TextInputProps)}></TextInput>;
-  } else if (typeof inputProps.value === 'number') {
+  } else if (type === 'number') {
     input = <NumberInput {...(inputProps as NumberInputProps)}></NumberInput>;
   }
 

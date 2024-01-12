@@ -1,6 +1,6 @@
 'use client';
 
-import { useMonitor, MonitorProps } from '@/components/Utility/Monitor';
+import { useMonitor, useMonitorProps } from '@/components/Utility/Monitor';
 import { Container } from '@/components/base';
 import {
   EyesightTestController,
@@ -11,17 +11,17 @@ import {
 
 export default function EyesightTest() {
   // モニター情報
-  const monitorProps: MonitorProps = {};
-  const monitor = useMonitor(monitorProps);
+  const useMonitorProps: useMonitorProps = { width: 1920, height: 1080, inch: 24.5 };
+  const useMonitorReturn = useMonitor(useMonitorProps);
 
   // ヘッダー
   const headerProps: EyesightTestHeaderProps = {
-    monitor: monitor,
+    useMonitorReturn: useMonitorReturn,
   };
 
   // コントローラー
   const controllerProps: EyesightTestControllerProps = {
-    monitor: monitor,
+    monitor: useMonitorReturn.monitor,
   };
 
   return (

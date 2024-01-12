@@ -1,0 +1,30 @@
+// import { useState } from 'react';
+
+// import { Meta, StoryObj } from '@storybook/react';
+
+// import { TextInput, TextInputProps } from '../TextInput';
+
+// import { Label } from '@/components/base';
+
+// // メタデータの定義とexport default
+// const meta: Meta = {
+//   title: 'SomeForms/useStateProps/TextInput',
+//   component: TextInput,
+// };
+// export default meta;
+
+// // Storyの定義
+// type Story = StoryObj<TextInputProps>;
+
+// // Hook を使う場合のRender関数
+// function Render({ ...args }: TextInputProps) {
+//   const [value, setValue] = useState('value');
+//   args = { ...args, value, setValue };
+//   return <TextInput {...args}></TextInput>;
+// }
+
+// // Stories
+// export const Basic: Story = {
+//   args: {},
+//   render: Render,
+// };

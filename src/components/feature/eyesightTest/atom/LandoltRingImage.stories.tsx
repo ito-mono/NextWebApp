@@ -21,7 +21,7 @@ export const Basic: Story = {
     eyesight: 1.0,
   },
   render: function Render({ ...args }) {
-    args.monitor = useMonitor({});
+    args.monitor = useMonitor().monitor;
     return <LandoltRingImage {...args}></LandoltRingImage>;
   },
 };

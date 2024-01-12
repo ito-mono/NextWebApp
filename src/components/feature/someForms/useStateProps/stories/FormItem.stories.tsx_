@@ -1,22 +1,19 @@
-import { useState } from 'react';
+// import { useState } from 'react';
 
-import { Meta, StoryObj } from '@storybook/react';
+// import { Meta, StoryObj } from '@storybook/react';
 
-import { FormItem, FormItemProps } from './FormItem';
+// import { NumberInputProps, TextInputProps } from '..';
+// import { FormItem, FormItemProps } from '../FormItem';
 
-import { NumberInputProps, TextInputProps } from '.';
+// // メタデータの定義とexport default
+// const meta: Meta = {
+//   title: 'SomeForms/useStateProps/FormItem',
+//   component: FormItem,
+// };
+// export default meta;
 
-// メタデータの定義とexport default
-const meta: Meta = {
-  title: 'SomeForms/useStateProps/FormItem',
-  component: FormItem,
-};
-export default meta;
-
-// Storyの定義
-type Story = StoryObj<FormItemProps>;
-
-export const Basic: Story = {};
+// // Storyの定義
+// type Story = StoryObj<FormItemProps>;
 
 // export const String: Story = {
 //   args: { label: 'label' },

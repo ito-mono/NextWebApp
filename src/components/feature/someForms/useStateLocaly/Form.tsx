@@ -1,10 +1,11 @@
 /**
- * 一般的なパターンのフォーム
- * 親でstateを定義し、それをinputに渡す
- * そのため引数が増える。また入力項目が増えれば増えるほど管理が煩雑になる
+ * 非推奨
+ * inputの中でuseStateを行うパターン
+ * 親からinputにstateを渡す必要はないが、代わりにinputから親に更新を伝える為の関数を渡す必要がある
+ * value, setValueを渡す必要がない分、引数は減る
  */
 
-import { FormItem, FormItemProps } from '.';
+import { FormItem, FormItemProps, TextInput } from '.';
 
 import { FlexDirections } from '@/components/Utility/TailwindUtility';
 import { Container } from '@/components/base';

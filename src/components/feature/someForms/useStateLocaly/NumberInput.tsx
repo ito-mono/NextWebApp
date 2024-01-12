@@ -8,9 +8,13 @@ import { baseInputClassNames } from '../Style';
 
 import { Widths, TextAligns } from '@/components/Utility/TailwindUtility';
 
+const sizes = {
+  sm: 'py-2 px-4 text-sm',
+  md: 'py-2 px-6 text-md',
+  lg: 'py-3 px-8 text-lg',
+} as const;
+
 export type NumberInputProps = {
-  value: number;
-  setValue: Dispatch<SetStateAction<number>> | ((value: number) => void);
   min?: number;
   max?: number;
   useComma?: boolean;
@@ -20,8 +24,6 @@ export type NumberInputProps = {
 
 // memo化することで無駄なレンダリングを防ぐ
 export const NumberInput = memo(function NumberInput({
-  value,
-  setValue,
   min = 0,
   max = Number.MAX_SAFE_INTEGER,
   useComma = true,
@@ -32,15 +34,17 @@ export const NumberInput = memo(function NumberInput({
   console.log('レンダリング');
 
   const pattern = /^\d+(\.\d+)?$/;
+  const [value, setValue] = useState(0);
   const [localValue, setLocalValue] = useState(
     useComma ? value.toLocaleString() : value.toString(),
   );
+
+  const classNames = clsx(baseInputClassNames, Widths[width], TextAligns[align]);
   const inputEventHandlers = {
     onChange: onChange,
     onFocus: onFocus,
     onBlur: onBlur,
   };
-  const classNames = clsx(baseInputClassNames, Widths[width], TextAligns[align]);
 
   // コンポーネント
   return (

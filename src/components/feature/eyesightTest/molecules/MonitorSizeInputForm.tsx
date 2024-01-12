@@ -1,22 +1,43 @@
-// 'use client';
+'use client';
 
-// import { createContext } from 'react';
+import { Monitor, useMonitor, useMonitorReturn } from '@/components/Utility/Monitor';
+import { Form, FormProps } from '@/components/feature/someForms/useStateProps';
 
-// import { Monitor, useMonitor } from '@/components/Utility/Monitor';
-// import { InputForm, InputFormProps } from '@/components/base/molecules';
+// 型定義
+export type MonitorSizeInputFormProps = {
+  useMonitorReturn: useMonitorReturn;
+};
 
-// // 型定義
-// export type MonitorSizeInputFormProps = {
-//   //monitor: Monitor;
-// };
+// コンポーネント定義
+export function MonitorSizeInputForm({ useMonitorReturn, ...props }: MonitorSizeInputFormProps) {
+  const { monitor, ...setters } = useMonitorReturn;
 
-// // コンポーネント定義
-// export function MonitorSizeInputForm({ ...props }: MonitorSizeInputFormProps) {
-//   const monitor = useMonitor();
+  const inputFormProps: FormProps = {
+    direction: 'row',
+    formItemsProps: [
+      {
+        label: 'width',
+        inputProps: {
+          value: monitor.width,
+          setValue: setters.setWidth,
+        },
+      },
+      {
+        label: 'height',
+        inputProps: {
+          value: monitor.height,
+          setValue: setters.setHeight,
+        },
+      },
+      {
+        label: 'inch',
+        inputProps: {
+          value: monitor.inch,
+          setValue: setters.setInch,
+        },
+      },
+    ],
+  };
 
-//   const inputFormProps: InputFormProps = {
-//     direction: 'row',
-//   };
-
-//   return <InputForm {...inputFormProps}></InputForm>;
-// }
+  return <Form {...inputFormProps}></Form>;
+}

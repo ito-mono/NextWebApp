@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import { LandoltRingImage, LandoltRingImageProps, getRandomDirection } from '../';
 
 import { Monitor } from '@/components/Utility/Monitor';
+import { Button } from '@/components/base';
 
 export type EyesightTestControllerProps = {
   monitor: Monitor;
@@ -18,9 +19,9 @@ export function EyesightTestController({ monitor, ...props }: EyesightTestContro
 
   const imageProps: LandoltRingImageProps = {
     monitor,
-    direction: direction,
-    distance: distance,
-    eyesight: eyesight,
+    direction,
+    distance,
+    eyesight,
     ...props,
   };
 
@@ -32,6 +33,11 @@ export function EyesightTestController({ monitor, ...props }: EyesightTestContro
   return (
     <>
       <LandoltRingImage {...imageProps}></LandoltRingImage>
+      <Button onClick={incrementEyesight}></Button>
     </>
   );
+
+  function incrementEyesight() {
+    setEyesight((prev) => 0.5);
+  }
 }

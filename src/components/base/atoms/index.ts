@@ -3,3 +3,4 @@ export * from './Link';
 export * from './Label';
 export * from './Container';
 export * from './FlexItem';
+export * from './Select';

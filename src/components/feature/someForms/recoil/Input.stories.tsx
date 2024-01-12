@@ -4,7 +4,7 @@ import { Form } from './Form';
 import { InputProps } from './Input';
 
 const meta: Meta = {
-  title: 'Utility/Recoil/Inpput',
+  title: 'SomeForms/Recoil/Inpput',
   component: Form,
 };
 export default meta;
