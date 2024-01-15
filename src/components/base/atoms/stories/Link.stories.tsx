@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 
-import { Link, LinkProps } from './Link';
+import { Link, LinkProps } from '../Link';
 
 // メタデータの定義とexport default
 const meta: Meta = {

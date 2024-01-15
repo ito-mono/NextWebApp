@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 
-import { LandoltRingImage, LandoltRingImageProps } from './LandoltRingImage';
+import { LandoltRingImage, LandoltRingImageProps } from '../LandoltRingImage';
 
 import { useMonitor } from '@/components/Utility/Monitor';
 

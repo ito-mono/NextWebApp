@@ -23,7 +23,8 @@ export type ButtonProps = {
   variant?: keyof typeof variants;
   size?: keyof typeof sizes;
   isRounded?: boolean;
-  onClick?: () => void;
+  className?: string;
+  onClick?: (e: any) => void;
 };
 
 export function Button({
@@ -32,9 +33,15 @@ export function Button({
   variant = 'primary',
   size = 'md',
   isRounded = true,
+  className = '',
   ...props
 }: ButtonProps) {
-  const classNames = clsx(variants[variant], sizes[size], isRounded ? Rounds[size] : null);
+  const classNames = clsx(
+    variants[variant],
+    sizes[size],
+    isRounded ? Rounds[size] : null,
+    className,
+  );
 
   return (
     <button type={type} className={classNames} {...props}>

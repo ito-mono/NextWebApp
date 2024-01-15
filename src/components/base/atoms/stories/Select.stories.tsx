@@ -1,19 +1,17 @@
 import { Meta, StoryObj } from '@storybook/react';
 
-import { Label, LabelProps } from './Label';
+import { Select, SelectProps } from '../Select';
 
 // メタデータの定義とexport default
 const meta: Meta = {
-  title: 'Element/Label',
-  component: Label,
+  title: 'Element/Select',
+  component: Select,
 };
 export default meta;
 
 // Storyの定義
-type Story = StoryObj<LabelProps>;
+type Story = StoryObj<SelectProps>;
 
 export const Basic: Story = {
-  args: {
-    children: 'Label',
-  },
+  args: { options: ['a', 'b', 'c'] },
 };

@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 
-import { EyesightTestHeader, EyesightTestHeaderProps } from '.';
+import { EyesightTestHeader, EyesightTestHeaderProps } from '..';
 
 import { useMonitor } from '@/components/Utility/Monitor';
 

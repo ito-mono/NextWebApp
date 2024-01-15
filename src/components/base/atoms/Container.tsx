@@ -13,9 +13,12 @@ export type ContainerProps = {
   width?: keyof typeof Widths;
   height?: keyof typeof Widths;
   isFlex?: boolean;
+  isGrid?: boolean;
   flexDirection?: keyof typeof FlexDirections;
   justify?: keyof typeof Justifies;
   alignItems?: keyof typeof AlignItems;
+
+  className?: string;
 };
 
 export function Container({
@@ -23,9 +26,11 @@ export function Container({
   width = 'full',
   height = 'auto',
   isFlex = false,
+  isGrid = false,
   flexDirection = 'row',
   justify = 'between',
   alignItems = 'center',
+  ...props
 }: ContainerProps) {
   const classNames = clsx(
     'container',
@@ -35,6 +40,8 @@ export function Container({
     isFlex && FlexDirections[flexDirection],
     isFlex && Justifies[justify],
     isFlex && AlignItems[alignItems],
+    isGrid && 'grid',
+    props.className,
   );
 
   return <div className={classNames}>{children}</div>;

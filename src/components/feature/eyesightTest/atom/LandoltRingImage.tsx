@@ -5,32 +5,14 @@ import Image from 'next/image';
 
 import { Monitor } from '@/components/Utility/Monitor';
 import { mmToPx } from '@/components/Utility/Pixel';
-
-const directions = {
-  up: 'rotate-0',
-  upRight: 'rotate-45',
-  right: 'rotate-90',
-  downRight: 'rotate-135',
-  down: 'rotate-180',
-  downLeft: 'rotate-225',
-  left: 'rotate-270',
-  upLeft: 'rotate-315',
-} as const;
-
-const distances = [1, 2, 3, 4, 5] as const;
-
-// prettier-ignore
-const eyesights = [
-  0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0,
-  1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2.0,
-] as const;
+import { Directions, Eyesights } from '@/components/feature/eyesightTest';
 
 // propsの型定義
 export type LandoltRingImageProps = {
   monitor: Monitor;
-  direction: keyof typeof directions;
-  distance: (typeof distances)[number];
-  eyesight: (typeof eyesights)[number];
+  direction: keyof typeof Directions;
+  distance: number;
+  eyesight: (typeof Eyesights)[number];
 };
 
 // コンポーネントの定義
@@ -44,10 +26,8 @@ export function LandoltRingImage({
   const alt = 'Landolt Ring';
   const src = '/LandoltRing.png';
 
-  console.log(monitor);
   const size = calcSize(eyesight, distance, monitor.dpi);
-
-  const classNames = clsx(directions[direction]);
+  const classNames = clsx(Directions[direction].rotateClassName);
 
   return (
     <Image
@@ -72,8 +52,8 @@ function calcSize(eyesight: number, distance: number, dpi: number): number {
 }
 
 // ランダムな方向を返す関数
-export function getRandomDirection(): keyof typeof directions {
-  const keys = Object.keys(directions) as Array<keyof typeof directions>;
+export function getRandomDirection(): keyof typeof Directions {
+  const keys = Object.keys(Directions) as Array<keyof typeof Directions>;
   const index = Math.floor(Math.random() * keys.length);
   return keys[index];
 }

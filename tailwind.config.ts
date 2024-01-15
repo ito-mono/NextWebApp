@@ -18,6 +18,15 @@ const config: Config = {
       315: '315deg',
     },
   },
-  plugins: [],
+  plugins: [
+    function ({ addComponents }: any) {
+      addComponents({
+        // .containerのサイズによるmax-widthの変更を防ぐ
+        '.container': {
+          maxWidth: '100%',
+        },
+      });
+    },
+  ],
 };
 export default config;
