@@ -1,7 +1,7 @@
 export default function Result() {
   return (
     <div>
-      <h1>Result</h1>
+      <h1>Resulta</h1>
     </div>
   );
 }
