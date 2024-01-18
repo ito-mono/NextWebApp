@@ -42,7 +42,7 @@ export function EyesightTestController({
   // MEMO: useEffect内で呼び出される関数のため、useCallbackを使用
   const goResultPage = useCallback(
     function () {
-      const href = '/eyesightTest/result' + `?eyesight=${eyesight}`;
+      const href = '/eyesightTest/result' + `?score=${eyesight}`;
       router.push(href);
     },
     [router, eyesight],

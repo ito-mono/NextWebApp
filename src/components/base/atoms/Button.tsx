@@ -43,6 +43,11 @@ export function Button({
     className,
   );
 
+  const color = 'blue';
+  const classname = clsx(`bg-${color}-500`);
+
+  console.log(classname);
+
   return (
     <button type={type} className={classNames} {...props}>
       {children}

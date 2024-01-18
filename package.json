@@ -12,6 +12,7 @@
     "build-sb": "storybook build"
   },
   "dependencies": {
+    "@ito-mono/package": "github:ito-mono/package",
     "clsx": "^2.1.0",
     "next": "14.0.4",
     "react": "^18",
