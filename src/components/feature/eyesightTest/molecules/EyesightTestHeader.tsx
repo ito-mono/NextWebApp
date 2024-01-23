@@ -13,8 +13,8 @@ export function EyesightTestHeader({ ...props }: EyesightTestHeaderProps) {
   const formProps: MonitorSizeInputFormProps = { ...props };
 
   return (
-    <header>
-      <Container isFlex>
+    <header className='w-full h-auto'>
+      <Container width='full' height='auto' isFlex justify='around'>
         <FlexItem>
           <h1>視力検査</h1>
         </FlexItem>

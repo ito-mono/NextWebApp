@@ -3,10 +3,10 @@
 import { useMonitor, useMonitorProps } from '@/components/Utility/Monitor';
 import { Container } from '@/components/base';
 import {
-  EyesightTestController,
-  EyesightTestControllerProps,
   EyesightTestHeader,
   EyesightTestHeaderProps,
+  EyesightTestMain,
+  EyesightTestMainProps,
 } from '@/components/feature/eyesightTest';
 
 export default function EyesightTest() {
@@ -20,16 +20,14 @@ export default function EyesightTest() {
   };
 
   // コントローラー
-  const controllerProps: EyesightTestControllerProps = {
+  const mainProps: EyesightTestMainProps = {
     monitor: useMonitorReturn.monitor,
   };
 
   return (
-    <Container width='full' height='screen' isFlex flexDirection='col' justify='start'>
+    <Container width='screen' height='screen' isFlex flexDirection='col' justify='start'>
       <EyesightTestHeader {...headerProps}></EyesightTestHeader>
-      <main>
-        <EyesightTestController {...controllerProps}></EyesightTestController>
-      </main>
+      <EyesightTestMain {...mainProps}></EyesightTestMain>
     </Container>
   );
 }

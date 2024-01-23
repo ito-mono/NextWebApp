@@ -1,0 +1,19 @@
+{
+  "autorun": false,
+  "terminals": [
+    {
+      "name": "frontend Next dev",
+      "description": "Next開発環境",
+      "focus": false,
+      "execute": true,
+      "commands": ["npm run dev"]
+    },
+    {
+      "name": "frontend Storybook",
+      "description": "Storybook",
+      "focus": false,
+      "execute": true,
+      "commands": ["npm run sb"]
+    }
+  ]
+}

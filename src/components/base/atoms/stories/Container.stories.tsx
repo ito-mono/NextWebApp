@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 
-import { Container, ContainerProps } from './Container';
+import { Container, ContainerProps } from '../Container';
 
 // メタデータの定義とexport default
 const meta: Meta = {

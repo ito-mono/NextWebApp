@@ -28,7 +28,8 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "src/components/feature/someForms/useStateProps/stories/FormItem.stories.tsx_"
+    "src/components/feature/someForms/useStateProps/stories/FormItem.stories.tsx_",
+    "tailwind.config.js"
   ],
   "exclude": ["node_modules"]
 }
